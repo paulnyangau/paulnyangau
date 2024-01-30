@@ -20,3 +20,16 @@ print(descriptive_stats)
 
 # Check for missing values
 missing_values <- colSums(is.na(df))
+
+# Apply the outliers function to numeric variables
+numer <- sapply(df, is.numeric)
+df[, numer] <- df[, numer] %>% 
+  lapply(outliers)
+
+# Summarize
+summary(data1)
+
+##Visualizations
+# Create histograms for each variable
+par(mfrow=c(1,1))
+hist(df$hhsize, main="Histogram of hhsize",)
